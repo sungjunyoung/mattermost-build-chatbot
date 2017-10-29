@@ -1,4 +1,6 @@
 import argparse
+from glob import glob
+from subprocess import call
 
 def parse_args():
     desc = "deploy openwhisk function."
@@ -10,7 +12,11 @@ def parse_args():
 
 def main():
     args = parse_args()
-    print(args)
+    function_name = args.name
+
+    # call(['zip', '-r', function_name + '.zip'] + glob(function_name + '/*'))
+    call(['wsk', 'action', 'update', function_name, '--kind', 'nodejs:6', function_name + '/index.js'])
+    # call(['rm', '-R', function_name + '.zip'])
 
 
 if __name__ == '__main__':
