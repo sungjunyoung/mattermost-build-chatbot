@@ -9,7 +9,7 @@
 - jenkins
 
 ### Usage
-> example exits already!
+> example exists already!
 1. set environment variables
     1. JENKINS_USER
     2. JENKINS_TOKEN
