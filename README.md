@@ -4,7 +4,7 @@
 - nodejs
 - openwhisk cli
 
-### Usage
+### Quick Start
 1. create function
     ```
     sh create.sh -n test 
