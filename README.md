@@ -1,37 +1,32 @@
-> **CAUTION** THIS PROJECT IS IN DEVELOPING
-## mattermost - openwhisk - jenkins build chatbot
+## local development environment for openwhisk function 
 
 ### Requirements
-- python
 - nodejs
 - openwhisk cli
-- mattermost
-- jenkins
 
 ### Usage
-> example exits already!
-1. set environment variables
-    1. JENKINS_USER
-    2. JENKINS_TOKEN
-
 1. create function
     ```
-    python create.py --name build_list 
+    sh create.sh -n test 
     ```
-    > this command create folder with index.js and 
-    create openwhisk function in IBM bluemix cloud functions
+    > this command create folder with index.js and package.json (skeleton) and 
+    create openwhisk function
     
-2. write code in `function/index.js`
-3. write test code in `local-test.js`
-4. test your code in local
+2. write code in `test/index.js`
+3. test your code in local
     ```
-    node local-test.js build_list
+    node local-test.js test
     ```
-5. update your code to bluemix cloud functions
+4. update your code to openwhisk server
     ```
-    python update.py --name build_list
+    sh update.sh -n test
     ```
-6. set mattermost slash command
-7. test your function
-
-![screenshot](./assets/screenshot.png)
+5. test your function with `wsk` command
+    ```
+    wsk action invoke test --blocking
+    ```
+6. delete function
+    ```
+    sh delete.sh -n test
+    ```
+    > this command delete 'test' folder and delete openwhisk action 'test'
